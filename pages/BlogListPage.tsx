@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { MicroCMSBlog, MicroCMSListResponse } from '../types';
+import SEOHead from '../components/SEOHead';
 
 const formatDate = (iso?: string): string => {
     if (!iso) return '';
@@ -48,7 +49,13 @@ const BlogListPage: React.FC = () => {
     }, []);
 
     return (
-        <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
+        <>
+            <SEOHead
+                title="ブログ＆ニュース｜群馬の美容師求人"
+                description="SALON SIFTのブログ＆ニュース。サロンスタイルの最新情報、シェアサロンのリアルな裏側、美容師としての生存戦略を発信します。"
+                canonical="/blog"
+            />
+            <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
             <div className="max-w-[1200px] mx-auto px-6">
                 <div className="text-center mb-16 md:mb-24">
                     <p className="text-[12px] font-bold tracking-[0.4em] text-[#3a533d] mb-4 uppercase">Blog</p>
@@ -111,7 +118,8 @@ const BlogListPage: React.FC = () => {
                     </div>
                 )}
             </div>
-        </div>
+            </div>
+        </>
     );
 };
 

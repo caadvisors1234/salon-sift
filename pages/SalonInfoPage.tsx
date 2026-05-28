@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { MapPin, Phone, ExternalLink, Clock, Calendar, CheckCircle2 } from 'lucide-react';
 import type { MicroCMSSalonInfo } from '../types';
+import SEOHead from '../components/SEOHead';
+
+const salonSeo = (
+    <SEOHead
+        title="サロン情報｜群馬・高崎の美容室 SALON SIFT"
+        description="SALON SIFTのサロン情報。募集要項・待遇、サロン環境・設備、アクセス情報をご案内します。群馬・高崎で美容師として働くなら。"
+        canonical="/salons"
+    />
+);
 
 const SalonInfoPage: React.FC = () => {
     const [salon, setSalon] = useState<MicroCMSSalonInfo | null>(null);
@@ -32,38 +41,49 @@ const SalonInfoPage: React.FC = () => {
 
     if (loading) {
         return (
-            <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
-                <div className="text-center py-20 text-gray-500 font-bold tracking-widest text-sm">
-                    読み込み中...
+            <>
+                {salonSeo}
+                <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
+                    <div className="text-center py-20 text-gray-500 font-bold tracking-widest text-sm">
+                        読み込み中...
+                    </div>
                 </div>
-            </div>
+            </>
         );
     }
 
     if (error || !salon) {
         return (
-            <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
-                <div className="max-w-[800px] mx-auto px-6">
-                    <div className="bg-white border border-[#B91C1C] p-6 text-[#B91C1C] font-bold text-sm">
-                        {error ?? 'サロン情報が見つかりませんでした。'}
+            <>
+                {salonSeo}
+                <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
+                    <div className="max-w-[800px] mx-auto px-6">
+                        <div className="bg-white border border-[#B91C1C] p-6 text-[#B91C1C] font-bold text-sm">
+                            {error ?? 'サロン情報が見つかりませんでした。'}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </>
         );
     }
 
     if (salon.isVisible === false) {
         return (
-            <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
-                <div className="text-center py-20 text-gray-500 font-bold tracking-widest text-sm">
-                    現在このサロン情報は公開されていません。
+            <>
+                {salonSeo}
+                <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
+                    <div className="text-center py-20 text-gray-500 font-bold tracking-widest text-sm">
+                        現在このサロン情報は公開されていません。
+                    </div>
                 </div>
-            </div>
+            </>
         );
     }
 
     return (
-        <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
+        <>
+            {salonSeo}
+            <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
             <div className="max-w-[1200px] mx-auto px-6">
                 <div className="text-center mb-16 md:mb-24">
                     {salon.label && (
@@ -187,7 +207,8 @@ const SalonInfoPage: React.FC = () => {
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
+        </>
     );
 };
 

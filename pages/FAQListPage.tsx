@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 import type { MicroCMSFAQ, MicroCMSListResponse } from '../types';
+import SEOHead from '../components/SEOHead';
 
 const FAQListPage: React.FC = () => {
     const [faqs, setFaqs] = useState<MicroCMSFAQ[]>([]);
@@ -48,7 +49,13 @@ const FAQListPage: React.FC = () => {
     };
 
     return (
-        <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
+        <>
+            <SEOHead
+                title="よくあるご質問（FAQ）｜群馬の美容師求人"
+                description="SALON SIFTへのよくあるご質問。働き方・報酬・サロン環境について、メリットだけでなく厳しい条件も含めてすべてお答えします。"
+                canonical="/faq"
+            />
+            <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
             <div className="max-w-[800px] mx-auto px-6">
                 <div className="text-center mb-16 md:mb-24">
                     <p className="text-[12px] font-bold tracking-[0.4em] text-[#3a533d] mb-4 uppercase">FAQ</p>
@@ -123,7 +130,8 @@ const FAQListPage: React.FC = () => {
                     <p className="text-sm text-gray-600 mb-6 font-bold">その他、気になる点がある方はLINEより直接ご相談ください。</p>
                 </div>
             </div>
-        </div>
+            </div>
+        </>
     );
 };
 
