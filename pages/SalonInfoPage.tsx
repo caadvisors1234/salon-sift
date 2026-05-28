@@ -54,23 +54,29 @@ const SalonInfoPage: React.FC = () => {
 
     if (error || !salon) {
         return (
-            <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
-                <div className="max-w-[800px] mx-auto px-6">
-                    <div className="bg-white border border-[#B91C1C] p-6 text-[#B91C1C] font-bold text-sm">
-                        {error ?? 'サロン情報が見つかりませんでした。'}
+            <>
+                {salonSeo}
+                <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
+                    <div className="max-w-[800px] mx-auto px-6">
+                        <div className="bg-white border border-[#B91C1C] p-6 text-[#B91C1C] font-bold text-sm">
+                            {error ?? 'サロン情報が見つかりませんでした。'}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </>
         );
     }
 
     if (salon.isVisible === false) {
         return (
-            <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
-                <div className="text-center py-20 text-gray-500 font-bold tracking-widest text-sm">
-                    現在このサロン情報は公開されていません。
+            <>
+                {salonSeo}
+                <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
+                    <div className="text-center py-20 text-gray-500 font-bold tracking-widest text-sm">
+                        現在このサロン情報は公開されていません。
+                    </div>
                 </div>
-            </div>
+            </>
         );
     }
 

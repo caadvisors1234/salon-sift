@@ -17,9 +17,15 @@ const root = path.resolve(__dirname, '..');
 const distDir = path.join(root, 'dist');
 
 // SSR ビルド成果物（vite build --ssr entry-server.tsx --outDir dist-ssr）
-const { render } = await import(
-  url.pathToFileURL(path.join(root, 'dist-ssr', 'entry-server.js')).href
-);
+const ssrEntryPath = path.join(root, 'dist-ssr', 'entry-server.js');
+if (!fs.existsSync(ssrEntryPath)) {
+  console.error(
+    `❌ SSRビルド成果物が見つかりません: ${ssrEntryPath}\n` +
+    '   先に "npm run build:server" を実行してください（"npm run build" なら自動で順に実行されます）。'
+  );
+  process.exit(1);
+}
+const { render } = await import(url.pathToFileURL(ssrEntryPath).href);
 
 // プリレンダ対象 = microCMS 非依存の固定ページ + 一覧ページのシェル。
 // 個別記事ページ（/blog/:slug, /voice/:slug）は対象外（SPAフォールバックでCSR）。

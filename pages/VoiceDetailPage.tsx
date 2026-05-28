@@ -3,17 +3,12 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, MessageCircle, Heart, User } from 'lucide-react';
 import type { MicroCMSListResponse, MicroCMSVoice } from '../types';
 import SEOHead from '../components/SEOHead';
+import { clip } from '../utils/text';
 
 const formatDate = (iso: string): string => {
     const d = new Date(iso);
     if (isNaN(d.getTime())) return iso;
     return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
-};
-
-// meta description 用に本文を1行化して120字に丸める
-const clip = (s: string, n = 120): string => {
-    const t = (s ?? '').replace(/\s+/g, ' ').trim();
-    return t.length > n ? `${t.slice(0, n)}…` : t;
 };
 
 const VoiceDetailPage: React.FC = () => {
