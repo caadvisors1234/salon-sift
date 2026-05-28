@@ -2,12 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, User, Feather } from 'lucide-react';
 import type { MicroCMSBlog, MicroCMSListResponse } from '../types';
+import SEOHead from '../components/SEOHead';
 
 const formatDate = (iso?: string): string => {
     if (!iso) return '';
     const d = new Date(iso);
     if (isNaN(d.getTime())) return iso;
     return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+};
+
+// meta description 用に本文を1行化して120字に丸める
+const clip = (s: string, n = 120): string => {
+    const t = (s ?? '').replace(/\s+/g, ' ').trim();
+    return t.length > n ? `${t.slice(0, n)}…` : t;
 };
 
 const BlogDetailPage: React.FC = () => {
@@ -78,7 +85,14 @@ const BlogDetailPage: React.FC = () => {
     }
 
     return (
-        <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
+        <>
+            <SEOHead
+                title={blog.title}
+                description={clip(blog.sections?.[0]?.body || `${blog.title}｜SALON SIFTのブログ＆ニュース`)}
+                canonical={`/blog/${blog.slug}`}
+                type="article"
+            />
+            <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
             <div className="max-w-[800px] mx-auto px-6">
                 <Link to="/blog" className="inline-flex items-center text-sm font-bold text-gray-500 hover:text-[#3a533d] transition-colors mb-8">
                     <ArrowLeft size={16} className="mr-2" />
@@ -140,7 +154,8 @@ const BlogDetailPage: React.FC = () => {
                     </Link>
                 </div>
             </div>
-        </div>
+            </div>
+        </>
     );
 };
 

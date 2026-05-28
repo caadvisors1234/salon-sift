@@ -2,11 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, MessageCircle, Heart, User } from 'lucide-react';
 import type { MicroCMSListResponse, MicroCMSVoice } from '../types';
+import SEOHead from '../components/SEOHead';
 
 const formatDate = (iso: string): string => {
     const d = new Date(iso);
     if (isNaN(d.getTime())) return iso;
     return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+};
+
+// meta description 用に本文を1行化して120字に丸める
+const clip = (s: string, n = 120): string => {
+    const t = (s ?? '').replace(/\s+/g, ' ').trim();
+    return t.length > n ? `${t.slice(0, n)}…` : t;
 };
 
 const VoiceDetailPage: React.FC = () => {
@@ -77,7 +84,14 @@ const VoiceDetailPage: React.FC = () => {
     }
 
     return (
-        <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
+        <>
+            <SEOHead
+                title={interview.title}
+                description={clip(interview.message || interview.reason || interview.profile || `${interview.title}｜SALON SIFTで働く美容師の声`)}
+                canonical={`/voice/${interview.slug}`}
+                type="article"
+            />
+            <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
             <div className="max-w-[800px] mx-auto px-6">
                 <Link to="/voice" className="inline-flex items-center text-sm font-bold text-gray-500 hover:text-[#3a533d] transition-colors mb-8">
                     <ArrowLeft size={16} className="mr-2" />
@@ -177,7 +191,8 @@ const VoiceDetailPage: React.FC = () => {
                     </Link>
                 </div>
             </div>
-        </div>
+            </div>
+        </>
     );
 };
 

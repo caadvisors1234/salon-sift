@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import SEOHead from '../components/SEOHead';
 
 const SimulationPage: React.FC = () => {
   const [sales, setSales] = useState<number | ''>('');
@@ -78,6 +79,12 @@ const SimulationPage: React.FC = () => {
   const hoursDown = result ? result.hoursChangePct >= 0 : true;
 
   return (
+    <>
+      <SEOHead
+        title="収益シミュレーション｜群馬の美容師求人"
+        description="SALON SIFTでの収益を試算。売上・客単価・現給与・勤務時間を入力するだけで、手取りと勤務時間の変化をシミュレーションできます。"
+        canonical="/simulation"
+      />
     <div className="min-h-screen bg-[#f0eeea] font-noto text-[#333]">
       <main className="pt-32 pb-20">
         <div className="max-w-[1000px] mx-auto px-6">
@@ -358,6 +365,7 @@ const SimulationPage: React.FC = () => {
         </div>
       </main>
     </div>
+    </>
   );
 };
 

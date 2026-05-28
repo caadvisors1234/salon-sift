@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { MicroCMSListResponse, MicroCMSVoice } from '../types';
+import SEOHead from '../components/SEOHead';
 
 const formatDate = (iso: string): string => {
     const d = new Date(iso);
@@ -46,7 +47,13 @@ const VoiceListPage: React.FC = () => {
     }, []);
 
     return (
-        <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
+        <>
+            <SEOHead
+                title="美容師のリアルな声｜群馬の美容師求人"
+                description="群馬・高崎の美容室 SALON SIFTで働く美容師のリアルな声。環境を変えて圧倒的なリターンと時間的自由を手に入れたメンバーの記録を掲載しています。"
+                canonical="/voice"
+            />
+            <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
             <div className="max-w-[1200px] mx-auto px-6">
                 <div className="text-center mb-16 md:mb-24">
                     <p className="text-[12px] font-bold tracking-[0.4em] text-[#3a533d] mb-4 uppercase">Voice</p>
@@ -105,7 +112,8 @@ const VoiceListPage: React.FC = () => {
                     </p>
                 </div>
             </div>
-        </div>
+            </div>
+        </>
     );
 };
 

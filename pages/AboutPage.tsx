@@ -4,6 +4,7 @@ import About from '../components/About';
 import Features from '../components/Features';
 import ChallengeSupport from '../components/ChallengeSupport';
 import { Link } from 'react-router-dom';
+import SEOHead from '../components/SEOHead';
 
 const AboutPage: React.FC = () => {
     useEffect(() => {
@@ -33,6 +34,12 @@ const AboutPage: React.FC = () => {
     }, []);
 
     return (
+        <>
+            <SEOHead
+                title="SALON SIFTとは｜群馬の美容師が選ぶ美容室の理念と戦略"
+                description="SALON SIFTの理念と5つの戦略的アプローチ。集客・教育・マーケティング・高還元率で、すべての美容師がノーリスクで最大限の成果を出せる環境を紹介します。"
+                canonical="/about"
+            />
         <div className="bg-[#f7f7f5] min-h-screen pt-20">
             {/* Page Header */}
             <div className="pt-16 pb-4 text-center px-6 reveal">
@@ -103,6 +110,7 @@ const AboutPage: React.FC = () => {
                 </Link>
             </div>
         </div>
+        </>
     );
 };
 
