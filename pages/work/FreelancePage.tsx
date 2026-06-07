@@ -38,7 +38,7 @@ const jobPostingSchema = {
   "@context": "https://schema.org",
   "@type": "JobPosting",
   "title": "群馬の美容師フリーランス求人",
-  "description": "群馬県（高崎・前橋）の美容師フリーランス求人。最大90%の業界最高還元率・完全自由出勤・集客費サロン負担。",
+  "description": "群馬県（高崎・前橋）の美容師フリーランス求人。最大80%の高還元率（材料持ち込みでさらに優遇）・完全自由出勤・集客費サロン負担。",
   "hiringOrganization": {
     "@type": "Organization",
     "name": "SALON SIFT",
@@ -106,7 +106,7 @@ const FreelancePage: React.FC = () => {
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               {[
-                { label: '還元率', value: '高還元率', detail: '売上の高い割合がそのまま手取りに。詳しい還元率はLINEでご相談ください。' },
+                { label: '還元率', value: '最大80%', detail: '売上の最大80%がそのまま手取りに。材料持ち込みの場合はさらに優遇。' },
                 { label: 'シフト', value: '完全自由', detail: '曜日・時間・休日はすべて自分で決める。完全な自由があります。' },
                 { label: '集客費', value: '100%サロン負担', detail: 'ホットペッパービューティー最上位プラン・SNS広告費を全額負担。' },
                 { label: '実績', value: '多数の成功実績', detail: '移籍後すぐに収入が大幅アップしたスタイリストが多数います。詳しくはLINEで。' },
@@ -142,7 +142,7 @@ const FreelancePage: React.FC = () => {
                 <tbody>
                   {[
                     ['収入の天井', '低め（保証あり）', '高い', '最高（上限なし）'],
-                    ['還元率', '固定給＋歩合', '高還元率', '最高還元率'],
+                    ['還元率', '固定給＋歩合', '最大80%', '最大80%'],
                     ['最低保証', 'あり', 'なし', 'なし'],
                     ['社会保険', '完備', '自己負担', '自己負担'],
                     ['シフト自由度', '応相談', '自由出勤', '完全自由'],
@@ -176,7 +176,7 @@ const FreelancePage: React.FC = () => {
                 '完全自由な時間管理でライフスタイルを最優先にしたい方',
                 '独立・開業を視野に入れ、まずノーリスクで経営感覚を養いたい方',
                 '指名客が多くいて、そのお客様を連れてシェアサロンに移籍したい方',
-                '月収60万円以上を本気で目指す、野心のある美容師',
+                '手取り50〜80万円を本気で目指す、野心のある美容師',
               ].map((text, i) => (
                 <div key={i} className="flex items-start gap-4 bg-white p-5 border border-gray-100">
                   <CheckCircle className="text-[#3a533d] shrink-0 mt-0.5" size={20} />
