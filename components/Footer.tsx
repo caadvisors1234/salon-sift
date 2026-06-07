@@ -35,7 +35,8 @@ const Footer: React.FC = () => {
               <p className="text-gray-400 border-l-2 border-gray-200 pl-4 mb-10">働き方別求人</p>
               <ul className="space-y-6">
                 <li><Link to="/work/seishain" className="hover:text-[#3a533d] transition-colors flex items-center group">正社員 <ArrowUpRight size={10} className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity" /></Link></li>
-                <li><Link to="/work/gyoumuitaku" className="hover:text-[#3a533d] transition-colors flex items-center group">業務委託（フリーランス）<ArrowUpRight size={10} className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity" /></Link></li>
+                <li><Link to="/work/gyoumuitaku" className="hover:text-[#3a533d] transition-colors flex items-center group">業務委託<ArrowUpRight size={10} className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity" /></Link></li>
+                <li><Link to="/work/freelance" className="hover:text-[#3a533d] transition-colors flex items-center group">フリーランス<ArrowUpRight size={10} className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity" /></Link></li>
                 <li><Link to="/work/parttime" className="hover:text-[#3a533d] transition-colors flex items-center group">パート・アルバイト <ArrowUpRight size={10} className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity" /></Link></li>
               </ul>
             </div>

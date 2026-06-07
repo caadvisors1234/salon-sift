@@ -42,16 +42,17 @@ const Hero: React.FC = () => {
           <div className="space-y-4">
             <h1 className="sr-only">群馬の美容師求人｜高崎・前橋の美容室 SALON SIFT</h1>
             <div className="bg-[#3a533d] text-white text-[12px] md:text-sm font-bold px-4 py-2 inline-block mb-2 shadow-lg">
-              群馬｜業務委託で損してる美容師へ（ネイル・アイも順次受付中）
+              群馬｜フリーランス・業務委託で損してる美容師へ（ネイル・アイも順次受付中）
             </div>
             <h2 className="text-white text-[6vw] md:text-[4rem] font-bold leading-[1.2] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] tracking-[-0.03em]">
               「今の契約、<br />本当に得ですか？」
             </h2>
             <div className="bg-white/95 backdrop-blur-md inline-block px-6 py-5 md:px-10 md:py-8 shadow-2xl mt-4 max-w-lg">
               <ul className="text-[#333] text-[4vw] md:text-2xl font-bold tracking-[0.05em] leading-relaxed space-y-3">
-                <li className="flex items-center"><span className="text-[#3a533d] mr-2">✔</span> 売上70万 → <span className="text-[#B91C1C] mx-1">手取り60万</span>設計</li>
+                <li className="flex items-center"><span className="text-[#3a533d] mr-2">✔</span> <span className="text-[#B91C1C] mx-1">手取り50〜80万</span>設計</li>
                 <li className="flex items-center"><span className="text-[#3a533d] mr-2">✔</span> 集客はサロン負担</li>
                 <li className="flex items-center"><span className="text-[#3a533d] mr-2">✔</span> 最低保証30万〜</li>
+                <li className="flex items-center"><span className="text-[#3a533d] mr-2">✔</span> 正社員・業務委託・パート 選べる働き方</li>
               </ul>
             </div>
           </div>
