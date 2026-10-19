@@ -5,7 +5,7 @@ import Footer from './Footer';
 
 const Layout: React.FC = () => {
     return (
-        <div className="min-h-screen overflow-x-hidden flex flex-col">
+        <div className="min-h-screen overflow-x-clip flex flex-col">
             <Header />
 
             {/* Main Content Area */}
@@ -18,7 +18,7 @@ const Layout: React.FC = () => {
             {/* Floating LINE CTA (Persists across all pages) */}
             <div className="fixed bottom-0 left-0 right-0 z-50 p-2 md:p-4 pointer-events-none flex justify-center pb-safe">
                 <a
-                    href="https://line.me/ti/p/exrAW4jmt5"
+                    href="https://line.me/ti/p/e-XjwdEpaa"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="pointer-events-auto bg-[#06C755] hover:bg-[#05b34c] text-white w-full max-w-[600px] rounded-full shadow-[0_4px_20px_rgba(0,0,0,0.2)] flex items-center justify-center py-3 md:py-4 px-6 transition-transform hover:scale-105"

@@ -5,6 +5,7 @@ import Features from '../components/Features';
 import ChallengeSupport from '../components/ChallengeSupport';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
+import BreakText from '../components/BreakText';
 
 const AboutPage: React.FC = () => {
     useEffect(() => {
@@ -44,7 +45,7 @@ const AboutPage: React.FC = () => {
             {/* Page Header */}
             <div className="pt-16 pb-4 text-center px-6 reveal">
                 <p className="text-[12px] font-bold tracking-[0.4em] text-[#3a533d] mb-4 uppercase">About Us</p>
-                <h1 className="text-3xl md:text-5xl font-bold font-montserrat tracking-widest text-gray-900 mb-6">群馬の美容師が選ぶ美容室<br className="md:hidden" /> SALON SIFTの理念と戦略</h1>
+                <h1 className="text-3xl md:text-5xl font-bold font-montserrat tracking-widest text-gray-900 mb-6"><BreakText text="群馬の美容師が|選ぶ美容室" /><br className="md:hidden" /> <BreakText text="SALON SIFTの|理念と戦略" /></h1>
                 <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed font-bold">
                     美容師としての「働き方」を自ら設計できる自由と、<br className="hidden md:block" />
                     圧倒的な環境が生み出す最高のパフォーマンスについて。
@@ -58,7 +59,7 @@ const AboutPage: React.FC = () => {
                         01. OUR VISION & PHILOSOPHY
                     </span>
                     <h2 className="mt-8 md:mt-10 text-xl md:text-2xl font-bold text-gray-800 tracking-wider">
-                        美容師が生涯輝き続けるための場所
+                        <BreakText text="美容師が生涯|輝き続けるための場所" />
                     </h2>
                 </div>
                 {/* Statement inherently has its own bg-[#f7f7f5] padding/margin */}
@@ -71,7 +72,7 @@ const AboutPage: React.FC = () => {
                     02. OUR STRATEGY
                 </span>
                 <h2 className="mt-8 md:mt-10 text-2xl md:text-3xl font-bold text-gray-900 tracking-wider leading-relaxed">
-                    理念を達成するための<br className="md:hidden" />「5つの戦略的アプローチ」
+                    理念を達成するための<br className="md:hidden" /><BreakText text="「5つの|戦略的アプローチ」" />
                 </h2>
                 <p className="mt-6 text-sm md:text-base text-gray-600 max-w-2xl mx-auto leading-[2]">
                     ただ場所を提供するだけのシェアサロンではありません。集客、教育、マーケティング、そして高い還元率──。すべての美容師がノーリスクで最大限の成果を出せるよう、私たちが独自に構築した環境とサポート体制をご紹介します。
@@ -90,7 +91,7 @@ const AboutPage: React.FC = () => {
                     03. REAL ENVIRONMENT
                 </span>
                 <h2 className="mt-10 text-2xl md:text-3xl font-bold text-white tracking-wider leading-relaxed pb-8 md:pb-12">
-                    戦略を裏付ける「環境」
+                    <BreakText text="戦略を裏付ける|「環境」" />
                 </h2>
                 {/* Features inherently has a dark green bg #3a533d so it blends perfectly */}
             </div>

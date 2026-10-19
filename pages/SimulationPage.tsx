@@ -1,5 +1,56 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useMemo, useRef } from 'react';
 import SEOHead from '../components/SEOHead';
+import BreakText from '../components/BreakText';
+
+const MAX_DIGITS = 9;
+
+// 3桁区切りで表示する数値入力。カーソル位置は「カーソルより前の数字の数」で保持する
+const NumberInput: React.FC<{
+  id: string;
+  value: number | '';
+  onChange: (value: number | '') => void;
+  placeholder?: string;
+}> = ({ id, value, onChange, placeholder }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const digitsBeforeCaret = useRef<number | null>(null);
+  const display = value === '' ? '' : value.toLocaleString('ja-JP');
+
+  useLayoutEffect(() => {
+    const input = inputRef.current;
+    if (!input || digitsBeforeCaret.current === null) return;
+    let pos = 0;
+    let digits = 0;
+    while (pos < display.length && digits < digitsBeforeCaret.current) {
+      if (/\d/.test(display[pos])) digits++;
+      pos++;
+    }
+    input.setSelectionRange(pos, pos);
+    digitsBeforeCaret.current = null;
+  }, [display]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // 全角数字も受け付ける
+    const raw = e.target.value.normalize('NFKC');
+    const caret = e.target.selectionStart ?? raw.length;
+    const digits = raw.replace(/\D/g, '').slice(0, MAX_DIGITS);
+    digitsBeforeCaret.current = Math.min(raw.slice(0, caret).replace(/\D/g, '').length, digits.length);
+    onChange(digits ? Number(digits) : '');
+  };
+
+  return (
+    <input
+      ref={inputRef}
+      id={id}
+      type="text"
+      inputMode="numeric"
+      autoComplete="off"
+      value={display}
+      onChange={handleChange}
+      className="flex-1 min-w-0 bg-[#d8d5cd] border-0 px-3 md:px-4 py-3 text-right text-base md:text-lg font-medium tabular-nums focus:outline-none focus:ring-2 focus:ring-[#3a533d]/40 transition-all placeholder-gray-500/60"
+      placeholder={placeholder}
+    />
+  );
+};
 
 const SimulationPage: React.FC = () => {
   const [sales, setSales] = useState<number | ''>('');
@@ -90,10 +141,38 @@ const SimulationPage: React.FC = () => {
         <div className="max-w-[1000px] mx-auto px-6">
           <div className="text-center mb-12">
             <p className="text-[12px] font-bold tracking-[0.4em] text-[#3a533d] mb-4 uppercase">Simulation</p>
-            <h1 className="text-3xl md:text-5xl font-bold tracking-widest text-gray-900 mb-6">収益シミュレーション<span className="block text-base md:text-lg mt-4 tracking-wider">群馬の美容師求人｜高崎・前橋の美容室 SALON SIFT</span></h1>
+            <h1 className="text-3xl md:text-5xl font-bold tracking-widest text-gray-900 mb-6"><BreakText text="収益|シミュレーション" /><span className="block text-base md:text-lg mt-4 tracking-wider">群馬の美容師求人｜高崎市井野町の美容室 SALON SIFT</span></h1>
             <p className="text-gray-600 leading-relaxed text-sm md:text-base">
               SALON SIFTでの収益を試算できます。<br className="hidden md:block"/>
               実際の収益は、ご利用状況などによって異なりますので、目安としてご利用ください。
+            </p>
+          </div>
+
+          {/* 費用の内訳 */}
+          <div className="bg-white border-l-4 border-[#3a533d] p-6 md:p-8 mb-10 shadow-sm">
+            <h2 className="text-sm md:text-base font-bold tracking-widest text-gray-900 mb-2">試算に含まれる費用</h2>
+            <p className="text-xs md:text-sm text-gray-600 leading-relaxed mb-5">
+              フリーランス・業務委託の場合、報酬から次の費用を差し引いた額が手取りになります。
+            </p>
+            <dl className="divide-y divide-gray-200 text-xs md:text-sm">
+              {[
+                { term: '報酬', value: '売上の80%', note: '最大80%還元です。この試算では80%で計算しています。' },
+                { term: '仕入れ費', value: '売上の5%', note: 'サロンで用意している薬剤・材料を使う場合にかかる費用です。' },
+                { term: '基本使用料', value: '月50,000円（税抜）', note: 'セット面・設備などの利用料です。' },
+                { term: '集客費', value: 'サロン負担', note: 'ホットペッパービューティー・SNS広告などの費用はかかりません。' },
+              ].map(item => (
+                <div key={item.term} className="py-3 grid grid-cols-[5.5rem_1fr] md:grid-cols-[8rem_10rem_1fr] gap-x-3 gap-y-1">
+                  <dt className="font-bold text-gray-700">{item.term}</dt>
+                  <dd className="font-bold text-gray-900">{item.value}</dd>
+                  <dd className="col-start-2 md:col-start-auto text-gray-500 leading-relaxed">{item.note}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="text-xs md:text-sm font-bold text-gray-800 mt-5">
+              <BreakText text="手取り ＝ |報酬（売上の80%）|− 仕入れ費（売上の5%）|− 基本使用料（月50,000円）" />
+            </p>
+            <p className="text-[11px] md:text-xs text-gray-500 leading-relaxed mt-2">
+              ※仕入れ費は、サロンで用意している材料を使う場合の費用です。この試算は、すべてサロンの材料を使う前提で計算しています。材料を持ち込む場合の条件は、LINEでご案内します。
             </p>
           </div>
 
@@ -107,18 +186,17 @@ const SimulationPage: React.FC = () => {
                   { label: '現在の給料', value: salary, set: setSalary, unit: '円/月', placeholder: '200,000' },
                   { label: '現在の勤務時間', value: hours, set: setHours, unit: '時間/月', placeholder: '200' },
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-3 md:gap-5">
-                    <label className="text-xs md:text-sm font-bold text-gray-700 w-24 md:w-32 shrink-0">
+                  <div key={idx} className="flex items-center gap-2 md:gap-5">
+                    <label htmlFor={`sim-input-${idx}`} className="text-xs md:text-sm font-bold text-gray-700 w-[5.5rem] md:w-32 shrink-0">
                       {item.label}
                     </label>
-                    <input
-                      type="number"
+                    <NumberInput
+                      id={`sim-input-${idx}`}
                       value={item.value}
-                      onChange={e => (item.set as any)(e.target.value ? Number(e.target.value) : '')}
-                      className="flex-1 bg-[#d8d5cd] border-0 px-4 py-3 text-right text-base md:text-lg font-medium focus:outline-none focus:ring-2 focus:ring-[#3a533d]/40 transition-all placeholder-gray-500/60"
+                      onChange={item.set}
                       placeholder={item.placeholder}
                     />
-                    <span className="text-xs md:text-sm text-gray-700 w-12 md:w-14 shrink-0">{item.unit}</span>
+                    <span className="text-xs md:text-sm text-gray-700 w-[3.25rem] md:w-16 shrink-0 whitespace-nowrap">{item.unit}</span>
                   </div>
                 ))}
               </div>
@@ -126,9 +204,9 @@ const SimulationPage: React.FC = () => {
               <div className="pt-8 flex justify-center">
                 <button
                   type="submit"
-                  className="bg-[#1a1a1a] text-white px-16 md:px-24 py-4 font-bold tracking-[0.3em] hover:bg-[#333] transition-colors text-sm md:text-base"
+                  className="bg-[#1a1a1a] text-white px-6 md:px-24 py-4 font-bold tracking-[0.15em] md:tracking-[0.3em] hover:bg-[#333] transition-colors text-sm md:text-base"
                 >
-                  シミュレーション結果を見る
+                  <BreakText text="シミュレーション|結果を見る" />
                 </button>
               </div>
             </form>
@@ -204,7 +282,8 @@ const SimulationPage: React.FC = () => {
                   </div>
 
                   <p className="text-center text-[10px] md:text-[11px] text-gray-500 mb-8">
-                    ※想定収入＝売上-基本使用料-仕入費(5%)
+                    ※想定収入＝報酬（売上の80%）− 仕入れ費（売上の5%）− 基本使用料（月50,000円・税抜）<br />
+                    仕入れ費は、サロンの材料を使う場合の費用です。
                   </p>
 
                   {/* 手取り */}

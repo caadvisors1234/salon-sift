@@ -12,6 +12,7 @@ import InstagramFeed from '../components/InstagramFeed';
 import FAQ from '../components/FAQ';
 import SEOHead from '../components/SEOHead';
 import { ArrowUpRight } from 'lucide-react';
+import BreakText from '../components/BreakText';
 
 const HomePage: React.FC = () => {
     const revealRefs = useRef<HTMLElement[]>([]);
@@ -41,8 +42,8 @@ const HomePage: React.FC = () => {
     return (
         <>
             <SEOHead
-                title="群馬の美容師求人｜高崎・前橋・太田・伊勢崎｜正社員・フリーランス・業務委託・パートアルバイト募集"
-                description="群馬で美容師求人を探すなら。高崎・前橋・太田・伊勢崎エリアの正社員・フリーランス・業務委託・パートアルバイト募集情報を掲載。最大80%還元・集客費サロン負担・柔軟なシフト設定で、あなたに合った働き方を選べます。詳しくはLINEでご相談ください。"
+                title="群馬の美容師求人｜高崎市井野町（井野駅）｜正社員・フリーランス・業務委託・パートアルバイト募集"
+                description="群馬で美容師求人を探すなら。高崎市井野町（井野駅）の美容室 SALON SIFTで、正社員・フリーランス・業務委託・パートアルバイトを募集しています。最大80%還元・集客費サロン負担・柔軟なシフト設定で、あなたに合った働き方を選べます。詳しくはLINEでご相談ください。"
                 canonical="/"
             />
             <Hero />
@@ -85,20 +86,20 @@ const HomePage: React.FC = () => {
             <div className="reveal bg-[#f7f7f5] py-16 md:py-24 px-6">
                 <div className="max-w-[1100px] mx-auto">
                     <p className="text-xs font-bold tracking-[0.4em] text-[#3a533d] uppercase mb-4 text-center">求人情報</p>
-                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center">エリア別・働き方別の美容師求人</h2>
+                    <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 text-center"><BreakText text="エリア別・|働き方別の|美容師求人" /></h2>
                     <p className="text-sm text-gray-600 mb-12 text-center">正社員・フリーランス・業務委託・パートまで、あなたに合った働き方を選べます。</p>
                     <div className="grid md:grid-cols-2 gap-10">
                         <div>
                             <p className="text-xs font-bold tracking-widest text-gray-400 uppercase mb-6 border-b border-gray-200 pb-3">エリア別求人</p>
                             <ul className="space-y-4">
                                 {[
-                                    { to: '/area/takasaki', label: '高崎の美容師求人', desc: '群馬最大の商業都市。月30名以上の新規集客実績' },
+                                    { to: '/area/takasaki', label: '高崎の美容師求人', desc: '高崎市井野町（井野駅）の店舗。|月30名以上の|新規集客実績' },
                                 ].map(item => (
                                     <li key={item.to}>
                                         <Link to={item.to} className="flex items-start justify-between group p-4 hover:bg-white transition-colors border border-transparent hover:border-gray-200">
                                             <div>
                                                 <p className="text-sm font-bold text-gray-900 group-hover:text-[#3a533d] transition-colors">{item.label}</p>
-                                                <p className="text-xs text-gray-500 mt-1">{item.desc}</p>
+                                                <p className="text-xs text-gray-500 mt-1"><BreakText text={item.desc} /></p>
                                             </div>
                                             <ArrowUpRight size={16} className="text-gray-300 group-hover:text-[#3a533d] transition-colors shrink-0 mt-1" />
                                         </Link>
@@ -110,16 +111,16 @@ const HomePage: React.FC = () => {
                             <p className="text-xs font-bold tracking-widest text-gray-400 uppercase mb-6 border-b border-gray-200 pb-3">働き方別求人</p>
                             <ul className="space-y-4">
                                 {[
-                                    { to: '/work/seishain', label: '正社員の美容師求人', desc: '安定した収入保証・社会保険完備・集客費サロン全額負担' },
-                                    { to: '/work/gyoumuitaku', label: '業務委託の美容師求人', desc: '最大80%還元・自由シフト・副業掛け持ちも可。詳しくはLINEで' },
-                                    { to: '/work/freelance', label: 'フリーランスの美容師求人', desc: '最大80%還元・完全自由出勤・独立志向の方に。詳しくはLINEで' },
-                                    { to: '/work/parttime', label: 'パート・アルバイトの美容師求人', desc: '時給1,500円〜・扶養範囲OK・柔軟なシフト設定' },
+                                    { to: '/work/seishain', label: '正社員の美容師求人', desc: '安定した収入保証・|社会保険完備・|集客費サロン全額負担' },
+                                    { to: '/work/gyoumuitaku', label: '業務委託の美容師求人', desc: '最大80%還元・|自由シフト・|副業掛け持ちも可。|詳しくはLINEで' },
+                                    { to: '/work/freelance', label: 'フリーランスの美容師求人', desc: '最大80%還元・|完全自由出勤・|独立志向の方に。|詳しくはLINEで' },
+                                    { to: '/work/parttime', label: 'パート・アルバイトの美容師求人', desc: '時給1,500円〜・|扶養範囲OK・|柔軟なシフト設定' },
                                 ].map(item => (
                                     <li key={item.to}>
                                         <Link to={item.to} className="flex items-start justify-between group p-4 hover:bg-white transition-colors border border-transparent hover:border-gray-200">
                                             <div>
                                                 <p className="text-sm font-bold text-gray-900 group-hover:text-[#3a533d] transition-colors">{item.label}</p>
-                                                <p className="text-xs text-gray-500 mt-1">{item.desc}</p>
+                                                <p className="text-xs text-gray-500 mt-1"><BreakText text={item.desc} /></p>
                                             </div>
                                             <ArrowUpRight size={16} className="text-gray-300 group-hover:text-[#3a533d] transition-colors shrink-0 mt-1" />
                                         </Link>

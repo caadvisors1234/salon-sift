@@ -59,7 +59,7 @@ const FAQListPage: React.FC = () => {
             <div className="max-w-[800px] mx-auto px-6">
                 <div className="text-center mb-16 md:mb-24">
                     <p className="text-[12px] font-bold tracking-[0.4em] text-[#3a533d] mb-4 uppercase">FAQ</p>
-                    <h1 className="text-3xl md:text-5xl font-bold font-montserrat tracking-widest text-gray-900 mb-6">よくあるご質問<span className="block text-base md:text-lg mt-4 tracking-wider">群馬の美容師求人｜高崎・前橋の美容室 SALON SIFT</span></h1>
+                    <h1 className="text-3xl md:text-5xl font-bold font-montserrat tracking-widest text-gray-900 mb-6">よくあるご質問<span className="block text-base md:text-lg mt-4 tracking-wider">群馬の美容師求人｜高崎市井野町の美容室 SALON SIFT</span></h1>
                     <p className="text-sm md:text-base text-gray-600 leading-relaxed font-bold">
                         都合の良いメリットだけでなく、厳しい条件も含めて「すべて」お答えします。
                     </p>

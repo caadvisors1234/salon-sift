@@ -1,11 +1,12 @@
 import React from 'react';
 import Logo from './Logo';
+import BreakText from './BreakText';
 
 const ABOUT_ITEMS = [
   {
     id: '01',
     en: 'WORK STYLE DESIGN',
-    ja: '「働き方」を自ら設計する自由',
+    ja: '「働き方」を|自ら設計する|自由',
     desc: '正社員・フリーランス・業務委託・パートまで、ライフステージに合わせて働き方を自由に選べる。「雇われる」のではなく、自らのキャリアと生活を主体的に設計できる環境を提供します。',
     // PC用の絶対配置座標 (Top)
     pcPos: 'top-[80px] left-1/2 -translate-x-1/2 text-center w-[360px]',
@@ -14,8 +15,8 @@ const ABOUT_ITEMS = [
   {
     id: '02',
     en: 'HIGH RETURN SYSTEM',
-    ja: '最大80%還元・高水準の給与体系',
-    desc: 'フリーランス・業務委託は還元率最大80%。材料持ち込みの場合はさらに優遇します。正社員にも手厚い最低保証と歩合給を用意し、努力と成果がダイレクトに収入へ反映されます。',
+    ja: '最大80%還元・|高水準の|給与体系',
+    desc: 'フリーランス・業務委託は最大80%還元。材料持ち込みの場合はさらに優遇します。正社員にも手厚い最低保証と歩合給を用意し、努力と成果がダイレクトに収入へ反映されます。',
     // (Top Right)
     pcPos: 'top-[310px] left-[calc(50%+260px)] -translate-y-1/2 text-left w-[300px]',
     delay: 'delay-300'
@@ -23,7 +24,7 @@ const ABOUT_ITEMS = [
   {
     id: '03',
     en: 'MARKETING SUPPORT',
-    ja: '顧客ゼロでも安心の集客力',
+    ja: '顧客ゼロでも|安心の集客力',
     desc: 'サロン全体で高い集客力を保持しているため、フリーランスや入社直後の方でも安定した入客が可能。個人の発信力だけに頼らず、業務と技術に集中できる環境を整えています。',
     // (Bottom Right)
     pcPos: 'top-[600px] left-[calc(50%+160px)] -translate-y-1/2 text-left w-[300px]',
@@ -32,7 +33,7 @@ const ABOUT_ITEMS = [
   {
     id: '04',
     en: 'SMART EDUCATION',
-    ja: '無駄を省いた効率的スキルアップ',
+    ja: '無駄を省いた|効率的|スキルアップ',
     desc: '短期間で実践的な技術を習得できる、無駄のないカリキュラムを構築。レッスンは強制ではなく自由参加形式を採用し、個人のペースと自主性を尊重した成長支援を行います。',
     // (Bottom Left)
     pcPos: 'top-[600px] right-[calc(50%+160px)] -translate-y-1/2 text-right w-[300px]',
@@ -41,7 +42,7 @@ const ABOUT_ITEMS = [
   {
     id: '05',
     en: 'CO-CREATION',
-    ja: '全員でブランドを創る一体感',
+    ja: '全員で|ブランドを|創る一体感',
     desc: 'スタッフ全員がサロンづくりに参加し、アイデアを形にできる風通しの良さが魅力。雇用形態の垣根を超えて互いにサポートし合い、新しいサロンを共に成長させていくチームワークがあります。',
     // (Top Left)
     pcPos: 'top-[310px] right-[calc(50%+260px)] -translate-y-1/2 text-right w-[300px]',
@@ -64,7 +65,7 @@ const About: React.FC<AboutProps> = ({ hideBackgroundText = false }) => {
           {/* Central Logo Container */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] z-20 text-center bg-[#f7f7f5] px-8 py-4">
             <div className="flex flex-col items-center scale-75 md:scale-90 opacity-90">
-              <Logo />
+              <Logo variant="stacked" className="h-36 md:h-40" />
             </div>
           </div>
 
@@ -80,7 +81,7 @@ const About: React.FC<AboutProps> = ({ hideBackgroundText = false }) => {
                 <div className="mb-1">
                   <span className="text-[11px] font-bold tracking-[0.3em] text-[#3a533d] uppercase font-montserrat">{item.en}</span>
                 </div>
-                <h3 className="text-[20px] font-bold tracking-[0.1em] text-[#333] mb-3 whitespace-nowrap">{item.ja}</h3>
+                <h3 className="text-[20px] font-bold tracking-[0.1em] text-[#333] mb-3 whitespace-nowrap"><BreakText text={item.ja} /></h3>
                 <p className="text-[12px] leading-[2.1] text-gray-500 tracking-wider">
                   {item.desc}
                 </p>
@@ -94,7 +95,7 @@ const About: React.FC<AboutProps> = ({ hideBackgroundText = false }) => {
           {/* Header in SP */}
           <div className="flex flex-col items-center mb-12">
             <div className="scale-75 opacity-90">
-              <Logo />
+              <Logo variant="stacked" className="h-36 md:h-40" />
             </div>
             <div className="w-full h-px bg-gray-300 mt-8"></div>
           </div>
@@ -102,10 +103,10 @@ const About: React.FC<AboutProps> = ({ hideBackgroundText = false }) => {
           {/* List layout */}
           <div className="space-y-0">
             {ABOUT_ITEMS.map((item) => (
-              <div key={item.id} className="grid grid-cols-[1fr_1.5fr] gap-x-6 py-10 border-b border-gray-900 last:border-b">
+              <div key={item.id} className="grid grid-cols-[1.1fr_1.4fr] gap-x-6 py-10 border-b border-gray-900 last:border-b">
                 <div className="flex flex-col space-y-3">
                   <span className="text-[11px] font-bold tracking-widest text-[#3a533d] font-montserrat">{item.en}</span>
-                  <h3 className="text-[18px] font-bold tracking-wider text-[#333] leading-tight">{item.ja}</h3>
+                  <h3 className="text-[18px] max-[374px]:text-[15px] font-bold tracking-wider text-[#333] leading-tight"><BreakText text={item.ja} /></h3>
                 </div>
                 <div className="pt-1">
                   <p className="text-[13px] leading-[2.2] text-gray-700 tracking-wider">

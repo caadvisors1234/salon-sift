@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { MicroCMSListResponse, MicroCMSVoice } from '../types';
 import SEOHead from '../components/SEOHead';
+import ImageNote from '../components/ImageNote';
+import BreakText from '../components/BreakText';
 
 const formatDate = (iso: string): string => {
     const d = new Date(iso);
@@ -50,17 +52,18 @@ const VoiceListPage: React.FC = () => {
         <>
             <SEOHead
                 title="美容師のリアルな声｜群馬の美容師求人"
-                description="群馬・高崎の美容室 SALON SIFTで働く美容師のリアルな声。環境を変えて圧倒的なリターンと時間的自由を手に入れたメンバーの記録を掲載しています。"
+                description="群馬・高崎の美容室 SALON SIFTで働く美容師のリアルな声。環境を変え、収入と時間の使い方を見直したメンバーの記録を掲載しています。"
                 canonical="/voice"
             />
             <div className="bg-[#f7f7f5] min-h-screen pt-24 pb-32">
             <div className="max-w-[1200px] mx-auto px-6">
                 <div className="text-center mb-16 md:mb-24">
                     <p className="text-[12px] font-bold tracking-[0.4em] text-[#3a533d] mb-4 uppercase">Voice</p>
-                    <h1 className="text-3xl md:text-5xl font-bold font-montserrat tracking-widest text-gray-900 mb-6">美容師のリアルな声<span className="block text-base md:text-lg mt-4 tracking-wider">群馬の美容師求人｜高崎・前橋の美容室 SALON SIFT</span></h1>
+                    <h1 className="text-3xl md:text-5xl font-bold font-montserrat tracking-widest text-gray-900 mb-6"><BreakText text="美容師の|リアルな声" /><span className="block text-base md:text-lg mt-4 tracking-wider">群馬の美容師求人｜高崎市井野町の美容室 SALON SIFT</span></h1>
                     <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed font-bold">
-                        綺麗事は言いません。ここで語られているのは、現状に不満を抱き、環境を変えることで「圧倒的なリターン」と「時間的自由」を手に入れたメンバーのリアルな記録です。
+                        綺麗事は言いません。ここで語られているのは、現状に不満を抱き、環境を変えることで「収入」と「時間の使い方」を見直したメンバーのリアルな記録です。
                     </p>
+                    <p className="text-[11px] md:text-xs text-gray-400 tracking-wider mt-4">※掲載している写真はイメージです。</p>
                 </div>
 
                 {loading && (
@@ -85,6 +88,7 @@ const VoiceListPage: React.FC = () => {
                                         alt={interview.title}
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
+                                    <ImageNote />
                                     {interview.category && interview.category.length > 0 && (
                                         <div className="absolute top-4 left-4 bg-[#3a533d] text-white text-[10px] font-bold tracking-widest px-3 py-1 uppercase">
                                             {interview.category.join(' / ')}

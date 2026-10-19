@@ -1,5 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
+import ImageNote from './ImageNote';
+import BreakText from './BreakText';
 
 const Hero: React.FC = () => {
   const images = [
@@ -31,6 +33,7 @@ const Hero: React.FC = () => {
           </div>
         ))}
         <div className="absolute inset-0 bg-black/20" />
+        <ImageNote className="top-4 right-6 md:top-5 md:right-8" />
       </div>
 
       <div className="relative z-10 h-full max-w-[1400px] mx-auto px-6 md:px-16 flex flex-col justify-start pt-20 md:pt-24">
@@ -40,20 +43,23 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="space-y-4">
-            <h1 className="sr-only">群馬の美容師求人｜高崎・前橋の美容室 SALON SIFT</h1>
+            <h1 className="sr-only">群馬の美容師求人｜高崎市井野町の美容室 SALON SIFT</h1>
             <div className="bg-[#3a533d] text-white text-[12px] md:text-sm font-bold px-4 py-2 inline-block mb-2 shadow-lg">
-              群馬｜フリーランス・業務委託で損してる美容師へ（ネイル・アイも順次受付中）
+              <BreakText text="群馬｜|フリーランス・|業務委託で|損してる美容師へ|（ネイル・アイも順次受付中）" />
             </div>
             <h2 className="text-white text-[6vw] md:text-[4rem] font-bold leading-[1.2] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] tracking-[-0.03em]">
               「今の契約、<br />本当に得ですか？」
             </h2>
             <div className="bg-white/95 backdrop-blur-md inline-block px-6 py-5 md:px-10 md:py-8 shadow-2xl mt-4 max-w-lg">
               <ul className="text-[#333] text-[4vw] md:text-2xl font-bold tracking-[0.05em] leading-relaxed space-y-3">
-                <li className="flex items-center"><span className="text-[#3a533d] mr-2">✔</span> <span className="text-[#B91C1C] mx-1">手取り50〜80万</span>設計</li>
+                <li className="flex items-center"><span className="text-[#3a533d] mr-2">✔</span> <span className="text-[#B91C1C] mx-1">手取り50〜80万</span>も目指せる設計<span className="text-[0.6em] align-super ml-0.5">※</span></li>
                 <li className="flex items-center"><span className="text-[#3a533d] mr-2">✔</span> 集客はサロン負担</li>
-                <li className="flex items-center"><span className="text-[#3a533d] mr-2">✔</span> 最低保証30万〜</li>
-                <li className="flex items-center"><span className="text-[#3a533d] mr-2">✔</span> 正社員・業務委託・パート 選べる働き方</li>
+                <li className="flex items-center"><span className="text-[#3a533d] mr-2">✔</span> 最低保証30万〜<span className="text-[0.6em] text-gray-500 ml-1">（正社員・条件あり）</span></li>
+                <li className="flex items-center"><span className="text-[#3a533d] mr-2">✔</span> <BreakText text="正社員・業務委託・パート |選べる働き方" /></li>
               </ul>
+              <p className="text-[10px] md:text-xs text-gray-500 font-medium leading-relaxed mt-4">
+                ※指名売上 月75〜115万円・還元率80%の場合の試算（仕入れ費5%・基本使用料5万円を差し引き後）。収入を保証するものではありません。
+              </p>
             </div>
           </div>
         </div>
@@ -70,11 +76,6 @@ const Hero: React.FC = () => {
           SALON SIFT
         </div>
         <div className="w-px h-32 bg-gradient-to-b from-black/60 to-transparent"></div>
-      </div>
-
-      <div className="absolute bottom-0 right-0 p-6 flex flex-col items-end gap-1">
-        <span className="text-[10px] font-bold text-white/40 tracking-widest uppercase">Scroll Down</span>
-        <div className="w-px h-16 bg-gradient-to-b from-white/80 to-transparent animate-bounce"></div>
       </div>
     </section>
   );

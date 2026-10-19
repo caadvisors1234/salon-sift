@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../../components/SEOHead';
 import { ArrowRight, CheckCircle, Star } from 'lucide-react';
+import BreakText from '../../components/BreakText';
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -48,7 +49,10 @@ const jobPostingSchema = {
     "@type": "Place",
     "address": {
       "@type": "PostalAddress",
+      "postalCode": "370-0004",
       "addressRegion": "群馬県",
+      "addressLocality": "高崎市",
+      "streetAddress": "井野町1122",
       "addressCountry": "JP"
     }
   },
@@ -72,23 +76,23 @@ const PartTimePage: React.FC = () => {
         {/* Hero */}
         <div className="bg-[#3a533d] text-white py-20 md:py-32 px-6">
           <div className="max-w-[900px] mx-auto">
-            <p className="text-sm font-bold tracking-widest text-green-300 mb-4 uppercase">Working Style / パート・アルバイト</p>
+            <p className="text-sm font-bold tracking-widest text-green-300 mb-4 uppercase">Working Style / <BreakText text="パート・アルバイト" /></p>
             <h1 className="text-3xl md:text-5xl font-bold font-montserrat tracking-widest mb-6 leading-tight">
-              群馬・高崎・前橋の美容師<br />パート・アルバイト求人
+              <BreakText text="群馬・|高崎の美容師" /><br /><BreakText text="パート・アルバイト|求人" />
             </h1>
             <p className="text-base md:text-lg text-green-100 leading-relaxed max-w-2xl">
-              群馬で美容師のパート・アルバイト求人をお探しの方へ。<br />
-              時給1,500円〜・柔軟なシフト設定で、<br className="hidden md:block" />
-              プライベートや家庭と両立しながら無理なく働けます。
+              <BreakText text="群馬で美容師の|パート・アルバイト求人を|お探しの方へ。" /><br />
+              <BreakText text="時給1,500円〜・|柔軟なシフト設定で、" /><br className="hidden md:block" />
+              <BreakText text="プライベートや家庭と|両立しながら|無理なく働けます。" />
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a href="https://line.me/ti/p/exrAW4jmt5" target="_blank" rel="noopener noreferrer"
+              <a href="https://line.me/ti/p/e-XjwdEpaa" target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center bg-white text-[#3a533d] font-bold tracking-widest px-8 py-4 hover:bg-green-50 transition-colors">
                 LINEで無料相談 <ArrowRight size={18} className="ml-2" />
               </a>
               <Link to="/simulation"
                 className="inline-flex items-center border border-white text-white font-bold tracking-widest px-8 py-4 hover:bg-white/10 transition-colors">
-                収入シミュレーション
+                収益シミュレーション
               </Link>
             </div>
           </div>
@@ -98,7 +102,7 @@ const PartTimePage: React.FC = () => {
         <div className="py-16 md:py-24 px-6">
           <div className="max-w-[900px] mx-auto">
             <p className="text-sm font-bold tracking-[0.4em] text-[#3a533d] uppercase mb-4">About</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">SALON SIFTのパート・アルバイトとは</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6"><BreakText text="SALON SIFTの|パート・アルバイトとは" /></h2>
             <p className="text-sm text-gray-600 leading-relaxed mb-10 max-w-2xl">
               「週に数日だけ働きたい」「扶養範囲内で無理なく続けたい」という方に最適な働き方です。
               時給1,500円〜スタートで、経験・スキルに応じた給与設定。
@@ -128,10 +132,11 @@ const PartTimePage: React.FC = () => {
         <div className="bg-white py-16 md:py-24 px-6">
           <div className="max-w-[900px] mx-auto">
             <p className="text-sm font-bold tracking-[0.4em] text-[#3a533d] uppercase mb-4">Comparison</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">パート・アルバイト vs 正社員 vs 業務委託</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4"><BreakText text="パート・アルバイト vs |正社員 vs |業務委託" /></h2>
             <p className="text-sm text-gray-500 mb-10">あなたのライフスタイルと目標に合った働き方を選べます。</p>
+            <p className="md:hidden text-[11px] text-gray-400 mb-2">※表は横にスクロールできます</p>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm border-collapse">
+              <table className="w-full min-w-[36rem] md:min-w-0 max-md:whitespace-nowrap text-sm border-collapse">
                 <thead>
                   <tr className="bg-[#3a533d] text-white">
                     <th className="py-4 px-6 text-left font-bold tracking-widest">比較項目</th>
@@ -171,7 +176,7 @@ const PartTimePage: React.FC = () => {
         <div className="py-16 md:py-24 px-6">
           <div className="max-w-[900px] mx-auto">
             <p className="text-sm font-bold tracking-[0.4em] text-[#3a533d] uppercase mb-4">For Who</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-10">こんな方にパート・アルバイトがおすすめ</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-10"><BreakText text="こんな方に|パート・アルバイトが|おすすめ" /></h2>
             <div className="space-y-4">
               {[
                 '育児・家事と両立しながら、無理なく働きたい方',
@@ -221,7 +226,7 @@ const PartTimePage: React.FC = () => {
         <div className="py-16 md:py-24 px-6">
           <div className="max-w-[900px] mx-auto">
             <p className="text-sm font-bold tracking-[0.4em] text-[#3a533d] uppercase mb-4">Q&A</p>
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-10">パート・アルバイト求人 よくある質問</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-10"><BreakText text="パート・アルバイト求人 |よくある質問" /></h2>
             <div className="space-y-6">
               {[
                 { q: '群馬で美容師パート・アルバイトはどのくらい稼げますか？', a: '時給1,500円〜からスタートできます。経験・スキルに応じた給与設定で、歩合制度もあるため頑張りに応じて収入アップが可能です。具体的な条件はLINEでお気軽にどうぞ。' },
@@ -229,7 +234,7 @@ const PartTimePage: React.FC = () => {
                 { q: 'シフトはどのくらい柔軟ですか？', a: '勤務時間や日数は柔軟に設定できます。週2日〜など少ない日数からでもOKです。プライベートや家庭との両立を大切にしながら、長く安心して続けられる環境を整えています。' },
               ].map((item, i) => (
                 <div key={i} className="border border-gray-200 p-6">
-                  <p className="font-bold text-gray-900 mb-3">Q. {item.q}</p>
+                  <p className="font-bold text-gray-900 mb-3">Q. <BreakText text={`${item.q.slice(0, -4)}|${item.q.slice(-4)}`} /></p>
                   <p className="text-sm text-gray-600 leading-relaxed"><span className="text-[#3a533d] font-bold mr-2">A.</span>{item.a}</p>
                 </div>
               ))}
@@ -239,11 +244,11 @@ const PartTimePage: React.FC = () => {
 
         {/* CTA */}
         <div className="py-16 md:py-24 px-6 bg-[#3a533d] text-white text-center">
-          <h2 className="text-2xl md:text-3xl font-bold font-montserrat tracking-widest mb-4">自分のペースで、群馬で美容師として働く</h2>
+          <h2 className="text-2xl md:text-3xl font-bold font-montserrat tracking-widest mb-4"><BreakText text="自分のペースで、|群馬で|美容師として働く" /></h2>
           <p className="text-green-100 text-sm mb-10">まずはLINEで気軽にご相談ください。見学・面談は無料です。</p>
-          <a href="https://line.me/ti/p/exrAW4jmt5" target="_blank" rel="noopener noreferrer"
+          <a href="https://line.me/ti/p/e-XjwdEpaa" target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center bg-white text-[#3a533d] font-bold tracking-widest px-10 py-5 hover:bg-green-50 transition-colors">
-            LINEで無料相談・見学予約 <ArrowRight size={20} className="ml-3" />
+            <BreakText text="LINEで|無料相談・|見学予約" /> <ArrowRight size={20} className="ml-3" />
           </a>
         </div>
 

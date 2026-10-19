@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { MapPin, Phone, ExternalLink, Clock, Calendar, CheckCircle2 } from 'lucide-react';
+import { MapPin, Phone, Clock, Calendar, CheckCircle2 } from 'lucide-react';
 import type { MicroCMSSalonInfo } from '../types';
 import SEOHead from '../components/SEOHead';
+import ImageNote from '../components/ImageNote';
 
 const salonSeo = (
     <SEOHead
@@ -115,6 +116,7 @@ const SalonInfoPage: React.FC = () => {
                             alt={salon.name}
                             className="w-full h-full object-cover transition-all duration-1000"
                         />
+                        <ImageNote />
                         {salon.recruitBadge && (
                             <div className="absolute top-6 left-6 md:top-10 md:left-10 bg-[#B91C1C] text-white px-6 py-3 text-xs md:text-sm font-bold tracking-widest shadow-lg">
                                 {salon.recruitBadge}
@@ -161,7 +163,7 @@ const SalonInfoPage: React.FC = () => {
                         <div className="bg-white shadow-xl p-8 md:p-10 sticky top-28">
                             <h2 className="text-xl font-bold font-montserrat tracking-widest border-b border-gray-200 pb-4 mb-8">ACCESS & INFO</h2>
 
-                            <div className="space-y-6 text-sm font-bold text-gray-700 mb-10">
+                            <div className="space-y-6 text-sm font-bold text-gray-700">
                                 <div className="flex items-start gap-4 pb-6 border-b border-gray-100">
                                     <MapPin size={20} className="text-[#3a533d] shrink-0 mt-0.5" />
                                     <div>
@@ -174,7 +176,7 @@ const SalonInfoPage: React.FC = () => {
                                 {salon.phone && (
                                     <div className="flex items-center gap-4 pb-6 border-b border-gray-100">
                                         <Phone size={20} className="text-[#3a533d] shrink-0" />
-                                        <p className="text-lg font-montserrat tracking-wider">{salon.phone}</p>
+                                        <a href={`tel:${salon.phone.normalize('NFKC').replace(/[^\d+]/g, '')}`} className="text-lg font-montserrat tracking-wider underline-offset-4 hover:underline hover:text-[#3a533d] transition-colors">{salon.phone}</a>
                                     </div>
                                 )}
                                 {salon.businessHours && (
@@ -188,19 +190,6 @@ const SalonInfoPage: React.FC = () => {
                                         <Calendar size={20} className="text-[#3a533d] shrink-0" />
                                         <p>{salon.holidays}</p>
                                     </div>
-                                )}
-                            </div>
-
-                            <div className="flex flex-col gap-4">
-                                {salon.hotpepper && (
-                                    <a href={salon.hotpepper} target="_blank" rel="noopener noreferrer" className="bg-[#333] text-white text-center py-4 text-xs font-bold tracking-widest hover:bg-[#3a533d] transition-colors flex items-center justify-center gap-2">
-                                        HotPepper Beauty <ExternalLink size={14} />
-                                    </a>
-                                )}
-                                {salon.beauty && (
-                                    <a href={salon.beauty} target="_blank" rel="noopener noreferrer" className="border border-gray-300 text-center py-4 text-xs font-bold tracking-widest hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
-                                        楽天ビューティ <ExternalLink size={14} />
-                                    </a>
                                 )}
                             </div>
                         </div>

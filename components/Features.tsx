@@ -2,6 +2,7 @@
 import React from 'react';
 import { FEATURES_DATA } from '../constants';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import BreakText from './BreakText';
 
 interface FeaturesProps {
   hideBackgroundText?: boolean;
@@ -30,7 +31,7 @@ const Features: React.FC<FeaturesProps> = ({ hideBackgroundText = false }) => {
           <p className="text-[12px] font-bold tracking-[0.4em] text-white/50 mb-2 uppercase">Good point</p>
           <h2 className="text-white text-3xl font-bold font-montserrat tracking-widest">REAL FACTS</h2>
           <p className="text-white/70 text-sm mt-4 leading-relaxed max-w-2xl font-bold">
-            綺麗事は言いません。今の業務委託環境で「将来に漠然と不安がある」「一生懸命働いているのに手取りが増えない」なら、必ず読んでください。SALON SIFTが他サロンとは一線を画す「リアルな事実と覚悟」をお伝えします。
+            今の業務委託環境で「将来に漠然と不安がある」「一生懸命働いているのに手取りが増えない」と感じている方へ。SALON SIFTの働き方を、良い面も条件も含めてありのままにお伝えします。
           </p>
         </div>
 
@@ -42,10 +43,10 @@ const Features: React.FC<FeaturesProps> = ({ hideBackgroundText = false }) => {
           >
             {FEATURES_DATA.map((f) => (
               <div key={f.id} className="w-[85vw] md:w-[45vw] lg:w-[30%] flex-shrink-0 snap-center bg-white/95 p-6 md:p-8 flex flex-col h-[520px] shadow-lg group">
-                <h3 className="text-lg md:text-xl font-bold mb-4 border-b border-gray-200 pb-4 min-h-[5rem] flex items-center">{f.title}</h3>
+                <h3 className="text-lg md:text-xl font-bold mb-4 border-b border-gray-200 pb-4 min-h-[5rem] flex items-center"><BreakText text={f.title} /></h3>
                 <p className="text-[13px] text-gray-600 mb-8 leading-relaxed flex-grow overflow-y-auto">{f.desc}</p>
                 <div className="relative overflow-hidden mt-auto aspect-video w-full flex-shrink-0">
-                  <img src={f.img} alt={f.title} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
+                  <img src={f.img} alt={f.title.replace(/\|/g, '')} className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" />
                   <span className="absolute bottom-4 right-4 text-[10px] font-bold tracking-widest text-white/90 bg-[#3a533d]/60 px-2 py-1 backdrop-blur-sm">Good point {f.id}</span>
                 </div>
               </div>

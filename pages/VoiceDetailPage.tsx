@@ -51,7 +51,10 @@ const VoiceDetailPage: React.FC = () => {
     if (loading) {
         return (
             <div className="min-h-screen bg-[#f7f7f5] flex items-center justify-center pt-24">
-                <div className="text-gray-500 font-bold tracking-widest text-sm">読み込み中...</div>
+                <div className="text-center">
+                    <div className="text-gray-500 font-bold tracking-widest text-sm">読み込み中...</div>
+                    <p className="text-[11px] md:text-xs text-gray-400 tracking-wider mt-4">※掲載している写真はイメージです。</p>
+                </div>
             </div>
         );
     }
@@ -103,6 +106,7 @@ const VoiceDetailPage: React.FC = () => {
                         )}
                     </div>
                 </div>
+                <p className="-mt-10 mb-12 text-right text-[11px] md:text-xs text-gray-400 tracking-wider">※掲載している写真はイメージです。</p>
 
                 <div className="mb-12">
                     <div className="flex flex-wrap items-center gap-4 mb-4">

@@ -12,10 +12,6 @@ export interface SalonLocation {
   phone: string;
   imageUrl: string;
   city: string;
-  links: {
-    hotpepper?: string;
-    beauty?: string;
-  };
   label?: string;
   subtitle?: string;
   description?: string;

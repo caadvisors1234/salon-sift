@@ -3,6 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, ArrowRight, ExternalLink } from 'lucide-react';
 import { SALONS } from '../constants';
+import ImageNote from './ImageNote';
+import BreakText from './BreakText';
 
 const SalonList: React.FC = () => {
   return (
@@ -23,8 +25,9 @@ const SalonList: React.FC = () => {
         <div className="space-y-32">
           {SALONS.slice(0, 1).map((salon) => (
             <div key={salon.id} className="flex flex-col lg:flex-row gap-12 group items-center">
-              <div className="w-full lg:w-1/2 overflow-hidden shadow-2xl">
+              <div className="relative w-full lg:w-1/2 overflow-hidden shadow-2xl">
                 <img src={salon.imageUrl} alt={salon.name} className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-[2s]" />
+                <ImageNote />
               </div>
               <div className="w-full lg:w-1/2 flex flex-col justify-center text-white">
                 <div className="space-y-2 mb-8">
@@ -38,11 +41,11 @@ const SalonList: React.FC = () => {
                   )}
                 </div>
 
-                <div className="space-y-6 py-8 border-y border-white/10 mb-8">
+                <div className="space-y-6 py-8 border-y border-white/10">
                   <div className="flex items-start gap-4">
                     <MapPin size={20} className="mt-1 flex-shrink-0 text-white/40" />
                     <div>
-                      <p className="text-sm leading-relaxed mb-2">{salon.address}</p>
+                      <p className="text-sm leading-relaxed mb-2"><BreakText text={salon.address.replace(' (', ' |(')} /></p>
                       <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(salon.address.split('(')[0].trim())}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[10px] font-bold bg-white/10 px-2 py-1 hover:bg-white/20 transition-colors uppercase">
                         Mapで見る <ExternalLink size={10} />
                       </a>
@@ -50,19 +53,15 @@ const SalonList: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-4">
                     <Phone size={20} className="flex-shrink-0 text-white/40" />
-                    <div className="flex items-center gap-4">
-                      <p className="text-lg font-montserrat tracking-widest">{salon.phone}</p>
-                      <span className="p-1.5 bg-white/10 rounded-full hover:bg-white hover:text-[#3a533d] transition-colors cursor-pointer">
+                    <a href={`tel:${salon.phone.normalize('NFKC').replace(/[^\d+]/g, '')}`} className="flex items-center gap-4 group">
+                      <span className="text-lg font-montserrat tracking-widest">{salon.phone}</span>
+                      <span className="p-1.5 bg-white/10 rounded-full group-hover:bg-white group-hover:text-[#3a533d] transition-colors">
                         <Phone size={14} />
                       </span>
-                    </div>
+                    </a>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-4">
-                  <a href="#" className="flex-1 md:flex-none text-center px-10 py-4 border border-white/30 text-[11px] font-bold tracking-widest hover:bg-white hover:text-[#3a533d] transition-all">HOT PEPPER</a>
-                  <a href="#" className="flex-1 md:flex-none text-center px-10 py-4 border border-white/30 text-[11px] font-bold tracking-widest hover:bg-white hover:text-[#3a533d] transition-all">楽天ビューティ</a>
-                </div>
               </div>
             </div>
           ))}
@@ -70,7 +69,7 @@ const SalonList: React.FC = () => {
 
         <div className="mt-24 pt-12 border-t border-white/5 text-center">
           <Link to="/salons" className="group inline-flex items-center space-x-6 text-white text-[13px] font-bold tracking-[0.3em] hover:translate-x-2 transition-transform">
-            <span>SALON SIFT 店舗情報</span>
+            <span><BreakText text="SALON SIFT |店舗情報" /></span>
             <div className="w-12 h-px bg-white/40 group-hover:w-20 transition-all"></div>
             <ArrowRight size={24} />
           </Link>
