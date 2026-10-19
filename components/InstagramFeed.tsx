@@ -14,9 +14,9 @@ declare global {
 const INSTAGRAM_URL = 'https://www.instagram.com/salon_sift_recruit';
 
 const EMBED_POSTS = [
-  { id: 'DXlt5EYE5Ll', permalink: 'https://www.instagram.com/p/DXlt5EYE5Ll/' },
-  { id: 'DXlth6zE8vB', permalink: 'https://www.instagram.com/p/DXlth6zE8vB/' },
-  { id: 'DXVM12Rk0mR', permalink: 'https://www.instagram.com/p/DXVM12Rk0mR/' },
+  { id: 'DeE_UdLgRc6', permalink: 'https://www.instagram.com/reel/DeE_UdLgRc6/' },
+  { id: 'Dd3Vy5alQxY', permalink: 'https://www.instagram.com/reel/Dd3Vy5alQxY/' },
+  { id: 'DZUjFSPE9oe', permalink: 'https://www.instagram.com/p/DZUjFSPE9oe/' },
 ];
 
 const SCRIPT_ID = 'instagram-embed-script';
