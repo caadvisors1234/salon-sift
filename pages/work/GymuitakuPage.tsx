@@ -43,7 +43,7 @@ const jobPostingSchema = {
   "hiringOrganization": {
     "@type": "Organization",
     "name": "SALON SIFT",
-    "sameAs": "https://salon-sift.vercel.app"
+    "sameAs": "https://salon-sift.com"
   },
   "jobLocation": {
     "@type": "Place",

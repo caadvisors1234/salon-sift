@@ -10,7 +10,7 @@ interface SEOHeadProps {
 }
 
 const SITE_NAME = 'SALON SIFT';
-const BASE_URL = 'https://salon-sift.vercel.app';
+const BASE_URL = 'https://salon-sift.com';
 
 const SEOHead: React.FC<SEOHeadProps> = ({
   title,

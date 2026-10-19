@@ -3,4 +3,4 @@ Allow: /
 # SPAフォールバック用の空シェル（実ページではない）。直アクセスURLのクロールを抑止
 Disallow: /app-shell
 
-Sitemap: https://salon-sift.vercel.app/sitemap.xml
+Sitemap: https://salon-sift.com/sitemap.xml
